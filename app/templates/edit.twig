@@ -1,0 +1,17 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <form action="/publish-post" method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" name="title" value="{{ post.title }}">
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" name="content">{{ post.content }}</textarea>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="submit" value="Publish"/>
+        </div>
+    </form>
+{% endblock %}

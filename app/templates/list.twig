@@ -1,0 +1,24 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+    <div class="text-right">
+    <a href="/edit-post/" class="btn btn-sm">New Post</a>
+    </div>
+    <ul class="list-group ">
+        {% for post in posts %}
+            <li class="list-group-item">
+                <a href="/post/{{ post.id }}">
+
+                    {{ post.title|e }}</a>
+                    <span class="btn-group pull-right" role="group">
+                        <a href="/remove-post/{{ post.id }}" class="btn btn-sm">Remove</a>
+                <a href="/edit-post/{{ post.id }}" class="btn btn-sm">Edit</a>
+            </span>
+
+
+
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

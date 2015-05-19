@@ -1,0 +1,28 @@
+{
+  "name": "dparadiz/cqrs-demo",
+  "description": "description_text",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "config" : {
+    "bin-dir" : "bin/"
+  },
+  "require": {
+
+    "symfony/routing": "^3.0@dev",
+    "symfony/http-foundation": "^3.0@dev",
+    "symfony/http-kernel": "^3.0@dev",
+    "twig/twig": "^2.0@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "CQRSDemo\\": "src/",
+      "Data\\" : "app/"
+    }
+  }
+}
