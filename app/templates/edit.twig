@@ -2,6 +2,7 @@
 
 {% block content %}
     <form action="/publish-post" method="post">
+        <input type="hidden" name="id" value="{{ post.id }}"/>
         <div class="form-group">
             <label for="title">Title</label>
             <input class="form-control" id="title" name="title" value="{{ post.title }}">

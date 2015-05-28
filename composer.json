@@ -14,9 +14,9 @@
   },
   "require": {
 
-    "symfony/routing": "^3.0@dev",
-    "symfony/http-foundation": "^3.0@dev",
-    "symfony/http-kernel": "^3.0@dev",
+    "symfony/routing": "^2.6",
+    "symfony/http-foundation": "^2.6",
+    "symfony/http-kernel": "^2.6",
     "twig/twig": "^2.0@dev"
   },
   "autoload": {

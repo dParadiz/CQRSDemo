@@ -64,19 +64,15 @@ class Storage implements StorageInterface
     }
 
     /**
+     * @param array $id
      * @param array $data
      * @return int
      */
-    public function addData($data)
+    public function addData($id, $data)
     {
         $content = $this->getStoredContent();
-
-        $dataId = count($content) + 1;
-        $content[$dataId] = $data;
-
+        $content[$id] = $data;
         self::storeContent($content);
-
-        return $dataId;
     }
 
     /**

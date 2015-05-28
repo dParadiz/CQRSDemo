@@ -34,8 +34,8 @@ interface StorageInterface
     public function removeData($id);
 
     /**
+     * @param $id
      * @param array $data
-     * @return int
      */
-    public function addData($data);
+    public function addData($id, $data);
 }

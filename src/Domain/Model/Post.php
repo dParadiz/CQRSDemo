@@ -8,33 +8,43 @@
 
 namespace CQRSDemo\Domain\Model;
 
+use CQRSDemo\Common\RecordsEvents;
+use CQRSDemo\Domain\Model\Event;
+
+
 /**
  * Class Post
  * @package CQRSDemo\Domain\Model
  */
-class Post
+class Post implements RecordsEvents
 {
+    /**
+     * @var array
+     */
+    private $recordedEvents = [];
     /**
      * @var int
      */
     private $id;
-    /**
-     * @var string
-     */
-    private $title;
-    /**
-     * @var string
-     */
-    private $content;
 
     /**
      * @param int $id
      */
-    public function __construct($id = null)
+    public function __construct($id)
     {
         $this->id = $id;
     }
 
+    /**
+     * @param $id
+     * @return static
+     */
+    public static function create($id)
+    {
+        $instance = new static($id);
+        $instance->recordEvent(new Event\PostWasCreated($id));
+        return $instance;
+    }
 
     /**
      * @return int
@@ -44,21 +54,6 @@ class Post
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
 
     /**
      * @param $title
@@ -66,7 +61,28 @@ class Post
      */
     public function publish($title, $content)
     {
-        $this->title = $title;
-        $this->content = $content;
+        $this->recordEvent(new Event\PostWasPublished($this->id, $title, $content));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecordedEvents()
+    {
+        return $this->recordedEvents;
+    }
+
+
+    public function remove()
+    {
+        $this->recordEvent(new Event\PostWasRemoved($this->id));
+    }
+
+    /**
+     * @param $event
+     */
+    public function recordEvent($event)
+    {
+        $this->recordedEvents[] = $event;
     }
 }
