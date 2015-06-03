@@ -6,7 +6,7 @@
  * Time: 23:22
  */
 
-namespace Data;
+namespace App\Data;
 
 
 use CQRSDemo\Common\StorageInterface;
@@ -17,6 +17,14 @@ use CQRSDemo\Common\StorageInterface;
  */
 class Storage implements StorageInterface
 {
+
+    protected $storageDir;
+
+    public function __construct($storageDir)
+    {
+        $this->storageDir = $storageDir;
+    }
+
 
     public function getStoredContent()
     {
@@ -80,7 +88,6 @@ class Storage implements StorageInterface
      */
     private function getDataDir()
     {
-        $dataDir = dirname(__DIR__) . '/data';
-        return $dataDir;
+        return $this->storageDir;
     }
 }

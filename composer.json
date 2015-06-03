@@ -14,15 +14,17 @@
   },
   "require": {
 
-    "symfony/routing": "^2.6",
-    "symfony/http-foundation": "^2.6",
-    "symfony/http-kernel": "^2.6",
-    "twig/twig": "^2.0@dev"
+    "symfony/routing": "^2.7",
+    "symfony/http-foundation": "^2.7",
+    "symfony/http-kernel": "^2.7",
+    "twig/twig": "^2.0@dev",
+    "symfony/dependency-injection" : "^2.7",
+    "broadway/broadway": "~0.2.0"
   },
   "autoload": {
     "psr-4": {
       "CQRSDemo\\": "src/",
-      "Data\\" : "app/"
+      "App\\" : "app/src/"
     }
   }
 }
